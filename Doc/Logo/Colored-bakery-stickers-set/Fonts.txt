@@ -1,0 +1,18 @@
+Fonts used in this design;
+
+Font: Frente H1, 
+Author: Frente, 
+Url: http://www.fontsquirrel.com/fonts/frente-h1; 
+
+Font: GoodDog, 
+Author: Fonthead Design, 
+Url: http://www.fontsquirrel.com/fonts/GoodDog; 
+
+Font: Lobster, 
+Author: Impallari Type, 
+Url: http://www.fontsquirrel.com/fonts/Lobster; 
+
+Font: Nexa Rust, 
+Author: Fontfabric, 
+Url: http://www.fontsquirrel.com/fonts/nexa-rust; 
+

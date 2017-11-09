@@ -1,0 +1,14 @@
+Fonts used in this design;
+
+Font: Andada, 
+Author: Huerta Tipográfica, 
+Url: http://www.fontsquirrel.com/fonts/andada; 
+
+Font: Euphoria Script, 
+Author: TypeSenses, 
+Url: http://www.fontsquirrel.com/fonts/euphoria-script; 
+
+Font: Raleway, 
+Author: The League of Moveable Type, 
+Url: http://www.fontsquirrel.com/fonts/raleway; 
+
