@@ -13,7 +13,7 @@
                             <a href="{% url 'Manager:index' slug=restaurante_slug mesa_id=mesa_id %}">Inicio</a>
                         </li>
                         <li>
-                            <a href="menu-list-collapse.html">Ordenar</a>
+                            <a href="{% url 'Menu:menuList' slug=restaurante_slug mesa_id=mesa_id %}">Ordenar</a>
                         </li>
                         <li>
                             <a href="page-contact.html">Contacto</a>
