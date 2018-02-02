@@ -1,0 +1,80 @@
+comandos utiles - Creaci�n de proyectos
+python -m venv "Nombre del entorno virtual" -> creación de entorno virtual (situarse en el directorio que se quiere crear)
+pip freeze -> lista de aplicaciones instaladas en el ambiente
+django-admin.py startproject nombre -> iniciar un nuevo proyecto
+django-admin.py startapp nombre -> crear aplicaci�n
+django-admin.py createsuperuser -> crear usuario para poder crear usuario del administrador del proyecto
+manage.py makemigrations -> realizar los archivos que se migran a la BD
+manage.py migrate -> realiza las migraciones con los archivos de arriba
+manage.py runserver -> para correr el servidor interno de la BD 
+
+manage.py ()se ejecuta desde la raiz del aplicativo
+
+
+Tarea:
+realizar el script para activar los ambientes:
+1. dirigirse a la ruta donde se crearon loss ambientes y activar el correspondiente (Documentos/SwiftS/Scripts/activate) 
+2. dirigirse a la ruta donde se quiere crear el proyecto o abrir donde se encuetra el empaquetador "manage.py"
+
+
+
+Comandos �tiles - creaci�n de aplicaciones 
+1. crear archivo __init__.py en el directorio apps
+2. en el directorio apps ejecutar:
+    django-admin.py startapp nombre
+3. se deben colocar en la variable installedapps (ojo las comas) que se encuentra en el archivo settings.py colocando la ruta
+
+Creación de modelos
+1. una vez creados los modelos se procede a registrar los modelos en el archivo admin.py de cada aplicaci�n
+ej: {   
+    from django.contrib import admin
+    from apps.Menu.models import Tipo, Platillo, Combo, DetallesCombo
+   
+    # Register your models here.
+    admin.site.register(Tipo)
+    admin.site.register(Platillo)
+    admin.site.register(Combo)
+    admin.site.register(DetallesCombo)
+}
+2. para poder entrar al admin de django se crea un super usuario
+3. revizar congurnecia en las tablas (campos...)
+
+Terminos:
+    Variables -> {{platillo.nombre}}
+    Contexto -> Información enviada por la vista al template, se envia en forma de diccionario
+    Vista -> Ej: 
+            from django.shortcuts import render
+            def menuIndex(request):
+                return render(request, 'Base/base.html')
+    Shortcut -> 
+    Tags -> Flujos de Control, bucles Ej: {%for Mascota in Mascota%}, if, load, extends ... ; recordar recerrar estas etiquetas
+    Herencia de plantillas -> Permite reducir la redundancia de codigo Ej: Footer, Navbar, Title, Header
+    Queryset -> consultas
+
+Creación de vistas
+1. Se dirige al modelo y se crea en el archivo views.py las vistas correspondientes encargadas 
+   de manejar la logica de la aplicacón (funciones)
+   Ej ("views.py" - archivo views en la aplicación Menu)
+                from django.shortcuts import render
+                def menuIndex(request):
+                    return render(request, 'Base/base.html')
+2. Se configura las urls para poder acceder a las vistas en el archivo settings.py y urls.py
+   Ej ("urls.py" - Archivo de configuración del proyecto)
+                from django.contrib import admin
+                from django.conf.urls import url, include
+                urlpatterns = [
+                    url(r'^admin/', admin.site.urls),
+                    url(r'^', include ('apps.Menu.urls')),
+                ]
+3. para poder acceder a las urls de la aplicación y tener mejor orden 
+   se crea un archivo "urls.py" en cada aplicación donde gestionan dichas solicitudes y a que vistas redirigen
+   Ej ("urls.py" - Archivo en la aplicacion Menu)
+        from django.conf.urls import url, include
+        from apps.Menu.views import menuIndex
+        urlpatterns = [
+            url(r'^$', menuIndex),
+        ]   
+4. La carpeta templates se crea en el directorio raiz y se debe a gregar dicha ruta en el archivo settings.py 
+   para que django pueda buscarlos en dicho directorio, así mismo se crean subcarpetas para cada 
+   aplicación.
+

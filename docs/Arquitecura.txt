@@ -1,0 +1,35 @@
+Modelos:
+- Restaurante
+	Restaurante
+	Tipo
+	Usuario
+- Orden
+	Orden
+	Detalles_Orden
+	Oferta
+- Menu
+	Platillo
+	Combo
+	Detalle_Combo
+
+Interfaz:
+
+- Usuarios con privilegios
+	login.html(?tipousuario)->
+		administrarSwiftService.html (Usuario SuperUsuario -> Configuraci�n de restaurantes)
+		indexAdmin.html (Usuario Administrador -> Administrar Menus, Usuarios, Pedidos)
+			administrarMenus.html
+			administrarUsuarios.html	
+			verPedidos.html
+
+- Usuario corriente:
+	idex.html (?mesa)
+		ordenar.html
+		contacto.html
+		carrito.html
+
+Templates:
+
+	base: base.html - help.html
+	menu:	yourCar.html - menuList.html - offerList.html
+	admin: login.html - admin.html - orderList.html

@@ -1,0 +1,78 @@
+{% extends "base/base.html" %}
+
+{% block header %} {% include "base/headerUser.html" %} {% endblock header %}
+
+{% block content %}
+
+
+<!-- Page Title -->
+
+<div class="page-title bg-dark dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 push-md-2 text-center">
+                <h2 class="mt-5 mb-3">{{restaurante_nombre}}</h2>
+                <h5 class="text-muted mb-0">{{restaurante_desc}}</h5>
+                <h2 class="mt-3 mb-0">Menú! - Mesa {{mesa_id}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Page Content -->
+<div class="page-content">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-10 push-md-1" role="tablist">
+                <!-- Menu Category / Burgers -->
+                {% if tipo_list and object_list%}
+                    {% for Tipo in tipo_list %}
+                        <div class="menu-category">
+                            <div class="menu-category-title collapse-toggle" role="tab" data-target="#menu{{Tipo.nombre}}" data-toggle="collapse" aria-expanded="false">
+                                <div class="bg-image">
+                                    <img src="assets/img/photos/menu-title-burgers.jpg" alt="">
+                                </div>
+                                <h2 class="title">{{Tipo.nombre}}</h2>
+                            </div>
+                            <div id="menu{{Tipo.nombre}}" class="menu-category-content collapse">
+                                <!-- Menu Item -->
+                                {% for Platillo in object_list %}
+                                {% if Platillo.tipo == Tipo %}
+
+                                <div class="menu-item menu-list-item">
+                                    <div class="row align-items-center">
+                                        <div class="col-sm-6 mb-2 mb-sm-0">
+                                            <h6 class="mb-0">{{Platillo.nombre}}</h6>
+                                            <span class="text-muted text-sm">{{Platillo.description}}</span>
+                                        </div>
+                                        <div class="col-sm-6 text-sm-right">
+                                            <span class="text-md mr-4">
+                                                <span class="text-muted">Desde:</span> COP ${{Platillo.precio}}</span>
+                                            <button class="btn btn-outline-secondary btn-sm" data-target="#productModal" data-toggle="modal">
+                                                <span>Add al carrito</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+
+                                {% endif %}
+                                {% endfor %}
+
+
+
+                                
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                {% else %}
+                <h1 class = "text-center">No hay registros en el Menú!</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+        
+
+{% endblock content %}

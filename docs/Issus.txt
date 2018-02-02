@@ -1,0 +1,28 @@
+generador de qr en la parte administrativa
+revisar tipos de dato decimal,contraseña, tipo tipo.
+crear relaciones
+ofertas
+precios
+acerca de
+
+funciones -> modulos que van a interacuar con los modelos que se almacenan en la BD
+GenerarQR -> Restaurante, n_mesas
+Agregar al carrito -> Frontend?
+Realizar orden -> Platillos
+Crud Platillos-> Platillos, Usuario
+Crud Tipos -> Tipos
+Contacto
+
+Apps gui administrativa:
+- Gestión menu
+	Gestion tipos
+	Gestión platillos
+	Gestión ofertas
+- Gestuion Restaurantes
+- Gestion Usuarios
+
+Apps usuario:
+- Gestión Pedidos
+
+
+

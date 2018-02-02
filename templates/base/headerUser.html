@@ -1,0 +1,62 @@
+{% load staticfiles %}
+
+{% block header %}
+<!-- Header - PC -->
+<header id="header" class="absolute transparent">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 push-md-2 text-center">
+                <!-- Navigation -->
+                <nav class="module module-navigation mr-4">
+                    <ul id="nav-main" class="nav nav-main">
+                        <li>
+                            <a href="{% url 'Manager:index' slug=restaurante_slug mesa_id=mesa_id %}">Inicio</a>
+                        </li>
+                        <li>
+                            <a href="menu-list-collapse.html">Ordenar</a>
+                        </li>
+                        <li>
+                            <a href="page-contact.html">Contacto</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="col-md-2 push-md-2">
+                <a href="#" class="module module-cart right" data-toggle="panel-cart">
+                    <span class="cart-icon">
+                        <i class="ti ti-shopping-cart"></i>
+                        {% comment %}
+                        <span class="notification">0</span> {% endcomment %}
+                    </span>
+                    {% comment %}
+                    <span class="cart-value">$0.0</span> {% endcomment %}
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<!-- Header  - Mobile-->
+<header id="header-mobile" class="dark">
+    <div class="module module-nav-toggle">
+        <a href="#" id="nav-toggle" data-toggle="panel-mobile">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+    </div>
+    <div class="customDivHeader module module-logo">
+        <a href="{% url 'Manager:index' slug=restaurante_slug mesa_id=mesa_id %}">
+            <img src="{% static '/img/ss-logo-horizontal-light.png' %}" alt="" height="200" width="200">
+        </a>
+    </div>
+    <a href="#" class="module module-cart" data-toggle="panel-cart">
+        <i class="ti ti-shopping-cart"></i>
+        {% comment %}
+        <span class="notification">0</span> {% endcomment %}
+    </a>
+</header>
+
+{% endblock header %}
