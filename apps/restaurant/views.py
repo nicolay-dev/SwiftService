@@ -10,6 +10,6 @@ from django.urls import reverse_lazy
 
 class CreateUser(CreateView):
     model = User
-    form_class = UserCreationForm
+    form_class = UserForm
     template_name = 'manager/menu_form.html'
     success_url = reverse_lazy('Manager:index_manager')
