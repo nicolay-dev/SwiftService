@@ -26,7 +26,7 @@
 
 </head>
 
-<body class="header-absolute">
+<body class="header-absolute" onload="btn_go_top(), loadSesion()">
     
 <div id="body-wrapper" class="animsition">
     
@@ -52,52 +52,11 @@
         {% endblock %}
 
         {% block help %}
-            {% include "Base/help.html" %}
+            
         {% endblock help %}
 
         {% block contact %}
-        <section class="section section-lg dark bg-dark">
-            <!-- BG Image -->
-            <div class="imgOp bg-image bg-parallax">
-                <img src="{% static '/img/photos/unete2.jpg' %}" alt="">
-            </div>
-            <div class="container text-center">
-                <div class="row customDiv">
-                    <div class="col-sm-12 ">
-                        <h2 class="mb-3">¿Quieres hacer parte de SwiftService?</h2>
-                        <h5 class="text-muted">No importa si tu negocio es grande o pequeño, contacta con nosotros!</h5>
-                        <a href="menu-list-navigation.html" class="btn btn-primary">
-                            <span>Contacto</span>
-                        </a>
-                        <a href="book-a-table.html" class="btn btn-outline-primary">
-                            <span>My app!</span>
-                        </a>
-                    </div>
-                </div>
-                <div class="row customDiv">
-                    <div class="col-sm-12">
-                        <div class="module module-social">
-                            <h5 class="textC text-muted mb-3">Redes Sociales</h5>
-                            <a href="#" class="icon icon-social icon-circle icon-sm icon-facebook">
-                                <i class="fa fa-facebook"></i>
-                            </a>
-                            <a href="#" class="icon icon-social icon-circle icon-sm icon-google">
-                                <i class="fa fa-google"></i>
-                            </a>
-                            <a href="#" class="icon icon-social icon-circle icon-sm icon-twitter">
-                                <i class="fa fa-twitter"></i>
-                            </a>
-                            <a href="#" class="icon icon-social icon-circle icon-sm icon-youtube">
-                                <i class="fa fa-youtube"></i>
-                            </a>
-                            <a href="#" class="icon icon-social icon-circle icon-sm icon-instagram">
-                                <i class="fa fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
         {% endblock contact %}
 
         {% block footer %}
@@ -142,6 +101,11 @@
         <!-- Body Overlay -->
         <div id="body-overlay"></div>
     {% endblock %}
+
+    {% block panelCart %}
+        {% include "base/cart.html" %}
+    {% endblock panelCart %}
+
 </div>    
 
 {% block extrajs %}
@@ -160,7 +124,8 @@
 <!-- JS core gestiona los menus en mobile (los vuelve visibles o no)-->
 <script src="{% static 'js/core.js' %}"></script>
 {% endblock %}
-
+<!-- peticiones ajax "seguras" -> csrftoken -->
+<script src="{% static 'js/DjangoAjax.js' %}"></script>
 <script src="{% static 'js/functions.js' %}"></script>
 
 </body>

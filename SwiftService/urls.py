@@ -21,12 +21,11 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include('apps.manager.urls', namespace='Manager')),
-    url(r'^(?P<slug>[-\w]+)/mesa-(?P<mesa_id>\d+)/',
-        include('apps.menu.urls', namespace='Menu')),
+    url(r'^(?P<slug>[-\w]+)/mesa-(?P<mesa_id>\d+)/',include('apps.menu.urls', namespace='Menu')),
 ]
 
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        url(r'^__debug__/', include(debug_toolbar.urls)),
-    ] + urlpatterns
+# if settings.DEBUG:
+#     import debug_toolbar
+#     urlpatterns = [
+#         url(r'^__debug__/', include(debug_toolbar.urls)),
+#     ] + urlpatterns

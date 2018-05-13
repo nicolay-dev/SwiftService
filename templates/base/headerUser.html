@@ -21,17 +21,9 @@
                     </ul>
                 </nav>
             </div>
-            <div class="col-md-2 push-md-2">
-                <a href="#" class="module module-cart right" data-toggle="panel-cart">
-                    <span class="cart-icon">
-                        <i class="ti ti-shopping-cart"></i>
-                        {% comment %}
-                        <span class="notification">0</span> {% endcomment %}
-                    </span>
-                    {% comment %}
-                    <span class="cart-value">$0.0</span> {% endcomment %}
-                </a>
-            </div>
+            {% block cart %}
+                 {% include "base/iconCart.html" %}
+            {% endblock cart %}
         </div>
     </div>
 </header>
@@ -52,11 +44,9 @@
             <img src="{% static '/img/ss-logo-horizontal-light.png' %}" alt="" height="200" width="200">
         </a>
     </div>
-    <a href="#" class="module module-cart" data-toggle="panel-cart">
-        <i class="ti ti-shopping-cart"></i>
-        {% comment %}
-        <span class="notification">0</span> {% endcomment %}
-    </a>
+    {% block cartMobile %} {% include "base/iconMobileCart.html" %} {% endblock cartMobile %}
+    
+    
 </header>
 
 {% endblock header %}

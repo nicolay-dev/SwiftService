@@ -3,10 +3,7 @@
 {% block header %} {% include "base/headerUser.html" %} {% endblock header %}
 
 {% block content %}
-
-
 <!-- Page Title -->
-
 <div class="page-title bg-dark dark">
     <div class="container">
         <div class="row">
@@ -18,7 +15,6 @@
         </div>
     </div>
 </div>
-
 <!-- Page Content -->
 <div class="page-content">
     <div class="container">
@@ -29,45 +25,38 @@
                     {% for Tipo in tipo_list %}
                         <div class="menu-category">
                             <div class="menu-category-title collapse-toggle" role="tab" data-target="#menu{{Tipo.nombre}}" data-toggle="collapse" aria-expanded="false">
+                                {% comment %} TODO: agregar la imagen o el color del platillo {% endcomment %}
+                                {% comment "" %}
                                 <div class="bg-image">
-                                   {% comment "" %}
                                     <img src="assets/img/photos/menu-title-burgers.jpg" alt="">
-                                   {% endcomment %} 
                                 </div>
+                                {% endcomment %} 
                                 <h2 class="title">{{Tipo.nombre}}</h2>
                             </div>
                             <div id="menu{{Tipo.nombre}}" class="menu-category-content collapse">
                                 <!-- Menu Item -->
                                 {% for Platillo in object_list %}
                                 {% if Platillo.tipo == Tipo %}
-
                                 <div class="menu-item menu-list-item">
                                     <div class="row align-items-center">
                                         <div class="col-sm-6 mb-2 mb-sm-0">
                                             <h6 class="mb-0">{{Platillo.nombre}}</h6>
-                                            <span class="text-muted text-sm">{{Platillo.description}}</span>
+                                            <span class="text-muted text-sm">{{Platillo.descripcion}}</span>
                                         </div>
                                         <div class="col-sm-6 text-sm-right">
                                             <span class="text-md mr-4">
                                                 <span class="text-muted">Desde:</span> COP ${{Platillo.precio}}</span>
-                                            <button class="btn btn-outline-secondary btn-sm" data-target="#productModal" data-toggle="modal">
+                                            <button id="btn{{Platillo.nombre}}" class="btn btn-outline-secondary btn-sm" onclick="loadPlatillo({{Platillo.pk}})" data-target="#productModal" data-toggle="modal">
                                                 <span>Add al carrito</span>
                                             </button>
                                         </div>
                                     </div>
                                 </div>
-                                
-
                                 {% endif %}
                                 {% endfor %}
-
-
-
-                                
                             </div>
                         </div>
                     {% endfor %}
-
                 {% else %}
                 <h1 class = "text-center">No hay registros en el Menú!</h1>
                 {% endif %}
@@ -75,6 +64,11 @@
         </div>
     </div>
 </div>
+
+{% include "menu/loadPlatillo.html" %}
+
+{% include "Base/help.html" %}
         
+
 
 {% endblock content %}

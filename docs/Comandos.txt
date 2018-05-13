@@ -16,8 +16,6 @@ realizar el script para activar los ambientes:
 1. dirigirse a la ruta donde se crearon loss ambientes y activar el correspondiente (Documentos/SwiftS/Scripts/activate) 
 2. dirigirse a la ruta donde se quiere crear el proyecto o abrir donde se encuetra el empaquetador "manage.py"
 
-
-
 Comandos �tiles - creaci�n de aplicaciones 
 1. crear archivo __init__.py en el directorio apps
 2. en el directorio apps ejecutar:
