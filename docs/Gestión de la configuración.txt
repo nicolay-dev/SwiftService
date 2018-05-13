@@ -19,7 +19,7 @@ pip freeze:
     wrapt==1.10.11
     yapf==0.20.1
 
-postgre --version: 10.1
+postgreSQL --version: 10.1
 user: postgres
 password: mtd3pbWo
 
