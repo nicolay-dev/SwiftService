@@ -49,11 +49,34 @@ function saveToCart(){
 	platillos_carrito.push(global_data.fields);
 	peticionAJAX("ajax/save_to_cart/", true, "POST", { 'getData': JSON.stringify(global_data.fields)},false);
 	loadCart();
+	
 }
 function cleanCart(){
 	peticionAJAX("ajax/clean_cart/", true, "GET", { 'getData': JSON.stringify(global_data.fields) }, false);
 	platillos_carrito = new Array();
+	// seenTotals(false, "", "");
 	loadCart();
+}
+
+function seenTotals(isSeen,total,descuento) {
+	if (isSeen) {
+		document.getElementById("sub-total-cart").innerText = "COL $" + total;
+		document.getElementById("discount-cart").innerText = "COL $" + descuento;
+		document.getElementById("total-cart").innerText = "COL $" + (total - descuento);
+		document.getElementById("label-sub-total-cart").innerText = "Subtotal:";
+		document.getElementById("label-discount-cart").innerText = "Descuento:";
+		document.getElementById("label-total-cart").innerText = "Total:";
+		document.getElementById("global-total").innerText = "$"+(total - descuento);
+	}else{
+		document.getElementById("sub-total-cart").innerText = "";
+		document.getElementById("discount-cart").innerText = "";
+		document.getElementById("total-cart").innerText = "";
+		document.getElementById("label-sub-total-cart").innerText = "";
+		document.getElementById("label-discount-cart").innerText = "";
+		document.getElementById("label-total-cart").innerText = "";
+		document.getElementById("global-total").innerText = "$0.0";
+	}
+	
 }
 
 function loadSesion() {
@@ -67,7 +90,8 @@ function loadSesion() {
 function loadCart() {
 	// loadSesion();	
 	// console.log(platillos_carrito.length);	
-	setNotification(platillos_carrito.length)
+	setNotification(platillos_carrito.length);
+	// console.log(platillos_carrito)
 	var table = document.getElementById("table-cart");
 	table.innerHTML = '';
 	for (var i = 0; i < platillos_carrito.length; i++) {
@@ -79,15 +103,35 @@ function loadCart() {
 			// texto sea el contenido de <td>, ubica el elemento <td> al final
 			// de la hilera de la tabla
 			var celda = document.createElement("td");
-			var textoCelda = document.createTextNode("celda en la hilera " + i + ", columna " + j);
+			var textoCelda = ""
+			if (j == 0) {
+				 textoCelda = document.createTextNode("1");
+			}if (j == 1) {
+				textoCelda = document.createTextNode(platillos_carrito[i].nombre);
+				
+			}if (j == 2) {
+				textoCelda = document.createTextNode(platillos_carrito[i].precio);
+			}
 			celda.appendChild(textoCelda);
 			hilera.appendChild(celda);
 		}
-
 		// agrega la hilera al final de la tabla (al final del elemento tblbody)
 		table.appendChild(hilera);
+	} if(platillos_carrito.length>0){
+		calcularPrecio(100);
+	}else{
+		seenTotals(false,"","")
 	}
 }
+
+function calcularPrecio(descuento) {
+	var total = 0;
+	for (var i = 0; i < platillos_carrito.length; i++) {
+		total += parseInt(platillos_carrito[i].precio)
+	}
+	seenTotals(true,total,descuento);
+}
+
 
 function checkout() {
 	
@@ -128,3 +172,25 @@ function btn_go_top() {
 	});
 }
 
+
+function alerta() {
+	//un alert
+	swal("Gracias por usar SwiftService, traeremons tu pedido en breve!").then((value) => {
+		switch (value) {
+			default:
+				location.href = window.location;
+		}
+	});
+}
+
+
+
+function checkMeal() {
+	document.getElementById("mesa").innerText = "";
+	document.getElementById("platillo").innerText = "";
+	document.getElementById("btn").innerText = "";
+}
+
+function redirecionar() {
+	location.href = "http://192.168.0.2:8000/manager/";
+}

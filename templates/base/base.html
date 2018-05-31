@@ -1,70 +1,64 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+<!DOCTYPE html> {% load staticfiles %}
 <html lang="es">
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    
+
     <title>{% block title %} {{restaurante_nombre}} {% endblock %} </title>
-    
+
     <!-- CSS Plugins -->
     <link rel="stylesheet" href="{% static 'plugins/bootstrap/dist/css/bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'plugins/slick-carousel/slick/slick.css'%}" />
     <link rel="stylesheet" href="{% static 'plugins/animate.css/animate.min.css'%}" />
-    <link rel="stylesheet" href="{% static 'plugins/animsition/dist/css/animsition.min.css'%}" />
-    
+    <link rel="stylesheet" href="{% static 'plugins/animsition/dist/css/animsition.min.css'%}" /> 
+
     {% block extracss %}
-        <!-- CSS Icons -->
-        <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" />
-        <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}" />
-        <!-- CSS Theme -->
-        <link id="theme" rel="stylesheet" href="{% static 'css/themes/theme-beige.css' %}" />
-        <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
-        <!-- Emojis -->
-        <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
+    <!-- CSS Icons -->
+    <link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" />
+    <link rel="stylesheet" href="{% static 'plugins/font-awesome/css/font-awesome.min.css' %}" />
+    <!-- CSS Theme -->
+    <link id="theme" rel="stylesheet" href="{% static 'css/themes/theme-beige.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}" />
+    <!-- Emojis -->
+    <link href="https://afeld.github.io/emoji-css/emoji.css" rel="stylesheet">
     {% endblock %}
 
 </head>
 
 <body class="header-absolute" onload="btn_go_top(), loadSesion()">
-    
-<div id="body-wrapper" class="animsition">
-    
-    {% block header %}    
 
-    {% endblock header %}
-    
-    <!-- Div content -->
-    <div id="content">    
-        {% block content %}
+    <div id="body-wrapper" class="animsition">
+
+        {% block header %} {% endblock header %}
+
+        <!-- Div content -->
+        <div id="content">
+            {% block content %}
             <section class="section section-main section-main-2 bg-dark dark">
                 <!-- Image BG -->
-                <div class="imgOp bg-image zooming"><img src="{% static '/img/photos/bg-restaurant.jpg' %}" alt=""></div>
+                <div class="imgOp bg-image zooming">
+                    <img src="{% static '/img/photos/bg-restaurant.jpg' %}" alt="">
+                </div>
                 <div class="container v-center text-center">
                     <img src="{% static 'img/SwiftServiceLogo.svg' %}" alt="" width="111" class="mb-5">
                     <h1 class="display-2 mb-2">{{restaurante.nombre}}</h1>
                     <h4 class="mb-4">Mesa: {{mesa_id}}</h4>
                     <h5 class="mb-5">SwiftService aplicación WEB</h5>
-                    <a href="{% url 'Menu:menuList' slug=restaurante_slug mesa_id=mesa_id %}" class="btn btn-outline-primary btn-lg"><span>Ordena online!</span></a>
+                    <a href="{% url 'Menu:menuList' slug=restaurante_slug mesa_id=mesa_id %}" class="btn btn-outline-primary btn-lg">
+                        <span>Ordena online!</span>
+                    </a>
                     <!-- <a href="menu-list-collapse.html" class="btn btn-outline-primary btn-lg"><span>Ordena online!</span></a> -->
-                </div>1
+                </div>
             </section>
-        {% endblock %}
-
-        {% block help %}
-            
-        {% endblock help %}
-
-        {% block contact %}
-        
-        {% endblock contact %}
-
-        {% block footer %}
+            {% endblock %} {% block help %} {% endblock help %} {% block contact %} {% endblock contact %} {% block footer %}
             <footer id="footer" class="customDivFooter bg-dark dark">
                 <div class="container">
                     <hr>
                     <div class="col-sm-6 push-lg-3 text-center">
-                        <a href="index.html"><img src="{% static 'img/MundoGeekHead.png' %}" alt="" width="40"></a>
+                        <a href="index.html">
+                            <img src="{% static 'img/MundoGeekHead.png' %}" alt="" width="40">
+                        </a>
                     </div>
                     <div class="customDivFooter col-sm-6 push-lg-3 text-center">
                         <span class="text-muted text-center">Copyright MundoGeek® 2017.</span>
@@ -72,11 +66,13 @@
                 </div>
             </footer>
             <!-- Back To Top -->
-            <a class="ir-arriba" id="back-to-top"><i class="ti ti-angle-up"></i></a>
-        {% endblock %}
-    </div>
+            <a class="ir-arriba" id="back-to-top">
+                <i class="ti ti-angle-up"></i>
+            </a>
+            {% endblock %}
+        </div>
 
-    {% block panelMobile %}
+        {% block panelMobile %}
         <!-- Panel Mobile -->
         <nav id="panel-mobile">
             <div class="module module-logo bg-dark dark">
@@ -91,42 +87,47 @@
             <nav class="module module-navigation"></nav>
             <div class="module module-social">
                 <h6 class="text-sm mb-3">Síguenos!</h6>
-                <a href="#" class="icon icon-social icon-circle icon-sm icon-facebook"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="icon icon-social icon-circle icon-sm icon-google"><i class="fa fa-google"></i></a>
+                <a href="#" class="icon icon-social icon-circle icon-sm icon-facebook">
+                    <i class="fa fa-facebook"></i>
+                </a>
+                <a href="#" class="icon icon-social icon-circle icon-sm icon-google">
+                    <i class="fa fa-google"></i>
+                </a>
                 <!-- <a href="#" class="icon icon-social icon-circle icon-sm icon-twitter"><i class="fa fa-twitter"></i></a> -->
                 <!-- <a href="#" class="icon icon-social icon-circle icon-sm icon-youtube"><i class="fa fa-youtube"></i></a> -->
-                <a href="#" class="icon icon-social icon-circle icon-sm icon-instagram"><i class="fa fa-instagram"></i></a>
+                <a href="#" class="icon icon-social icon-circle icon-sm icon-instagram">
+                    <i class="fa fa-instagram"></i>
+                </a>
             </div>
         </nav>
         <!-- Body Overlay -->
         <div id="body-overlay"></div>
+        {% endblock %} {% block panelCart %} {% include "base/cart.html" %} {% endblock panelCart %}
+
+    </div>
+
+    {% block extrajs %}
+    <script src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
+    <script src="{% static 'plugins/tether/dist/js/tether.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery.appear/jquery.appear.js' %}"></script>
+    <script src="{% static 'plugins/jquery.scrollto/jquery.scrollTo.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery.localscroll/jquery.localScroll.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery-validation/dist/jquery.validate.min.js' %}"></script>
+    <script src="{% static 'plugins/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.min.js' %}"></script>
+    <script src="{% static 'plugins/twitter-fetcher/js/twitterFetcher_min.js' %}"></script>
+    <script src="{% static 'plugins/skrollr/dist/skrollr.min.js' %}"></script>
+    <script src="{% static 'plugins/animsition/dist/js/animsition.min.js' %}"></script>
+    <!-- JS core gestiona los menus en mobile (los vuelve visibles o no)-->
+    <script src="{% static 'js/core.js' %}"></script>
     {% endblock %}
+    <!-- peticiones ajax "seguras" -> csrftoken -->
+    <script src="{% static 'js/DjangoAjax.js' %}"></script>
+    <script src="{% static 'js/functions.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    {% block panelCart %}
-        {% include "base/cart.html" %}
-    {% endblock panelCart %}
-
-</div>    
-
-{% block extrajs %}
-<script src="{% static 'plugins/jquery/dist/jquery.min.js' %}"></script>
-<script src="{% static 'plugins/tether/dist/js/tether.min.js' %}"></script>
-<script src="{% static 'plugins/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-<script src="{% static 'plugins/slick-carousel/slick/slick.min.js' %}"></script>
-<script src="{% static 'plugins/jquery.appear/jquery.appear.js' %}"></script>
-<script src="{% static 'plugins/jquery.scrollto/jquery.scrollTo.min.js' %}"></script>
-<script src="{% static 'plugins/jquery.localscroll/jquery.localScroll.min.js' %}"></script>
-<script src="{% static 'plugins/jquery-validation/dist/jquery.validate.min.js' %}"></script>
-<script src="{% static 'plugins/jquery.mb.ytplayer/dist/jquery.mb.YTPlayer.min.js' %}"></script>
-<script src="{% static 'plugins/twitter-fetcher/js/twitterFetcher_min.js' %}"></script>
-<script src="{% static 'plugins/skrollr/dist/skrollr.min.js' %}"></script>
-<script src="{% static 'plugins/animsition/dist/js/animsition.min.js' %}"></script>
-<!-- JS core gestiona los menus en mobile (los vuelve visibles o no)-->
-<script src="{% static 'js/core.js' %}"></script>
-{% endblock %}
-<!-- peticiones ajax "seguras" -> csrftoken -->
-<script src="{% static 'js/DjangoAjax.js' %}"></script>
-<script src="{% static 'js/functions.js' %}"></script>
 
 </body>
+
 </html>

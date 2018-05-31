@@ -1,7 +1,8 @@
 # functions
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 # views
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 # model
 from apps.menu.models import Tipo, Platillo
 from apps.restaurant.models import Restaurante
@@ -20,6 +21,7 @@ import copy
 # Create your views here.
 
 @ajax
+@csrf_exempt
 def get_platillo(request, *args,**kwargs):
     # import pdb;pdb.set_trace()
     platillo_pk = request.POST.get('getData')
@@ -29,6 +31,8 @@ def get_platillo(request, *args,**kwargs):
     }
     return JsonResponse(data)
 
+
+@csrf_exempt
 def add_platillo(request, *args, **kwargs):
     platillo = request.POST.get('getData')
     # # del request.session['platillo_1']
@@ -43,6 +47,8 @@ def add_platillo(request, *args, **kwargs):
 
     return JsonResponse("Nicolay", safe=False)
 
+
+@csrf_exempt
 def clean_cart(request, *args, **kwargs):
     llaves = request.session.keys()
     lista_keys = []
@@ -53,6 +59,8 @@ def clean_cart(request, *args, **kwargs):
             del request.session[key]
     return JsonResponse("Nicolay", safe=False)
 
+
+@csrf_exempt
 def load_sesion(request, *args, **kwargs):
     llaves = request.session.keys()
     lista_platillos = []
@@ -73,16 +81,35 @@ class CreateCategoria(CreateView):
     template_name = 'manager/menu_form.html'
     success_url = reverse_lazy('Manager:index_manager')
 
+class CategoriaList(ListView):
+    model = Tipo
+    template_name = 'manager/type_list.html'
+    paginate_by = 5
+
+class CategoriaUpdate(UpdateView):
+    model = Tipo
+    form_class = MenuForm
+    template_name = 'manager/menu_form.html'
+    success_url = reverse_lazy('Manager:list_categoria')
+
+class CategoriaDelete(DeleteView):
+    model = Tipo
+    template_name = 'manager/type_delete.html'
+    success_url = reverse_lazy('Manager:list_categoria')
+
 class MenuListView(ListView):
     model = Tipo
     template_name = 'menu/menuList.html'
 
+
+    
     def get_queryset(self, *args, **kwargs):
         # import pdb;pdb.set_trace()
         self.restaurante = Restaurante.objects.get(slug=self.kwargs['slug'])
         return Tipo.objects.filter(
             restaurante__slug=self.restaurante.slug)
 
+    
     def get_context_data(self, **kwargs):
         # sesión
         self.request.session['mesa_id'] = self.kwargs.get('mesa_id')
@@ -98,6 +125,10 @@ class MenuListView(ListView):
         context['object_list'] = Platillo.objects.filter(
             restaurante__slug=self.restaurante.slug)
         return context
+
+
+
+
 
 # class LoadPlatillo(DetailView):
 #     model = Platillo

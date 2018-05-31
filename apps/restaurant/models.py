@@ -22,23 +22,23 @@ class Restaurante(models.Model):
         return '{}'.format(self.nombre)
 
 
-class Usuario(models.Model):
-    """ Usuario : Modelo que permite almacenar toda la información de los Usuarios"""
-    # Types
-    TIPOS_USUARIO = {
-        ('V', 'Visitante'),
-        ('A', 'Autentificado'),
-        ('E', 'Editor'),
-        ('R', 'Administrador'),
-    }
-    # ForeingKeys
-    restaurante = models.ForeignKey(Restaurante, null=False, blank=False, on_delete=models.CASCADE)
-    # Attributes
-    nombre = models.CharField(max_length=50)
-    contraseña = models.CharField(max_length=40)
-    """contraseña : esto es un sha que se almacena en varchar(40)"""
-    tipo = models.CharField(max_length=1, choices=TIPOS_USUARIO)
-    """tipo : esto es un caracter que determina el tipo de usuarios de acuerdo a TPOS_USUARIOS"""
+# class Usuario(models.Model):
+#     """ Usuario : Modelo que permite almacenar toda la información de los Usuarios"""
+#     # Types
+#     TIPOS_USUARIO = {
+#         ('V', 'Visitante'),
+#         ('A', 'Autentificado'),
+#         ('E', 'Editor'),
+#         ('R', 'Administrador'),
+#     }
+#     # ForeingKeys
+#     restaurante = models.ForeignKey(Restaurante, null=False, blank=False, on_delete=models.CASCADE)
+#     # Attributes
+#     nombre = models.CharField(max_length=50)
+#     contraseña = models.CharField(max_length=40)
+#     """contraseña : esto es un sha que se almacena en varchar(40)"""
+#     tipo = models.CharField(max_length=1, choices=TIPOS_USUARIO)
+#     """tipo : esto es un caracter que determina el tipo de usuarios de acuerdo a TPOS_USUARIOS"""
 
-    def __str__(self):
-        return '{}'.format(self.nombre)
+#     def __str__(self):
+#         return '{}'.format(self.nombre)

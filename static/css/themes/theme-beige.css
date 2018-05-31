@@ -1009,7 +1009,7 @@ img {
 }
 
 .nav-main > li .dropdown-container {
-  top: calc(100% + 45px);
+  top: calc(100%);
   left: 0;
   position: absolute;
   background-color: #fff;

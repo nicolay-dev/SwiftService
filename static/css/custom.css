@@ -61,3 +61,30 @@ background: rgb(2, 2, 2);
 	bottom:20px;
 	right:20px;
 }
+
+.flotante {
+    display: scroll;
+    position: fixed;
+    bottom: 100px;
+    right: 0px;
+}
+
+
+@media screen and (max-width: 600px) {
+    .section-manager {
+        padding-top: 0rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .section-manager {
+        padding-top: 0rem;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    .section-manager {
+        padding-top: 7rem;
+    }
+}
+
